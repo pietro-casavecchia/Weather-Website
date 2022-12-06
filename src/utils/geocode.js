@@ -1,7 +1,9 @@
 const request = require('request')
 
+require('dotenv').config();
+
 const geocode = (address, callback) => {
-    const url = 'http://api.mapbox.com/geocoding/v5/mapbox.places/' + address + '.json? ACCESS TOKEN &limit=1'
+    const url = `http://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?${process.env.ACCESS_TOKEN}&limit=1`
 
     request({url: url, json: true}, (error, response) => {
         if (error) {
